@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WinZone CUET | Windows & Software Installation</title>
+<meta name="theme-color" content="#16a34a">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<style>
+:root {
+  --green:#16a34a; --green-h:#15803d; --green-l:#f0fdf4; --green-m:#dcfce7;
+  --red:#dc2626;   --red-h:#b91c1c;   --red-l:#fef2f2;   --red-m:#fee2e2;
+  --white:#ffffff; --gray-50:#f9fafb; --gray-100:#f3f4f6; --gray-200:#e5e7eb;
+  --gray-300:#d1d5db; --gray-600:#4b5563; --gray-700:#374151; --gray-900:#111827;
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.05);
+  --shadow-lg:0 10px 25px rgba(0,0,0,.1),0 4px 10px rgba(0,0,0,.06);
+  --shadow-xl:0 20px 40px rgba(0,0,0,.12);
+  --radius:12px; --radius-lg:20px; --radius-xl:28px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;color:var(--gray-900);overflow-x:hidden;line-height:1.6;}
+
+/* ── ANIMATED BG ── */
+.animated-bg{position:fixed;inset:0;z-index:-1;background:#fff;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);animation:blobAnim linear infinite;}
+.b1{width:700px;height:700px;background:radial-gradient(circle,rgba(22,163,74,.08),rgba(22,163,74,.03));top:-15%;left:-10%;animation-duration:30s;animation-name:b1m;}
+.b2{width:600px;height:600px;background:radial-gradient(circle,rgba(220,38,38,.07),rgba(220,38,38,.02));bottom:-10%;right:-10%;animation-duration:25s;animation-name:b2m;}
+.b3{width:400px;height:400px;background:radial-gradient(circle,rgba(22,163,74,.06),rgba(22,163,74,.01));top:40%;left:50%;animation-duration:20s;animation-name:b3m;}
+@keyframes b1m{0%{transform:translate(0,0) scale(1);}33%{transform:translate(80px,60px) scale(1.1);}66%{transform:translate(40px,120px) scale(.95);}100%{transform:translate(0,0) scale(1);}}
+@keyframes b2m{0%{transform:translate(0,0) scale(1);}33%{transform:translate(-80px,-60px) scale(1.08);}66%{transform:translate(-40px,-100px) scale(.93);}100%{transform:translate(0,0) scale(1);}}
+@keyframes b3m{0%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) translate(60px,-50px) scale(1.1);}100%{transform:translate(-50%,-50%) scale(1);}}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(22,163,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(22,163,74,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridPan 50s linear infinite;}
+@keyframes gridPan{to{background-position:60px 60px;}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-200);padding:0 1.5rem;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:1.4rem;font-weight:900;color:var(--green);letter-spacing:-.5px;text-decoration:none;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{color:var(--gray-600);text-decoration:none;font-weight:500;font-size:.9rem;transition:color .2s;}
+.nav-links a:hover{color:var(--green);}
+.nav-cta-btn{background:var(--red);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .2s;}
+.nav-cta-btn:hover{background:var(--red-h);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gray-700);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);padding:1rem 1.5rem;flex-direction:column;gap:.8rem;z-index:199;box-shadow:var(--shadow-lg);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--gray-700);text-decoration:none;font-weight:500;padding:.6rem 0;border-bottom:1px solid var(--gray-100);}
+.mobile-menu .mob-cta{background:var(--red);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:700;cursor:pointer;width:100%;margin-top:.5rem;}
+
+/* ── LAYOUT ── */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+section{padding:5rem 0;}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;}
+.hero-content{max-width:700px;margin:0 auto;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-m);color:var(--green);border:1px solid rgba(22,163,74,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1.5rem;}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.15;margin-bottom:1.2rem;color:var(--gray-900);}
+h1 .hl-green{color:var(--green);}
+h1 .hl-red{color:var(--red);}
+.hero-sub{font-size:1.05rem;color:var(--gray-600);margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(22,163,74,.25);}
+.btn-green:hover{background:var(--green-h);transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,163,74,.35);}
+.btn-outline{background:#fff;color:var(--gray-700);border:1.5px solid var(--gray-300);}
+.btn-outline:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 4px 14px rgba(220,38,38,.25);}
+.btn-red:hover{background:var(--red-h);transform:translateY(-2px);}
+.hero-stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-num{font-size:1.6rem;font-weight:900;color:var(--green);}
+.stat-label{font-size:.78rem;color:var(--gray-600);font-weight:500;}
+
+/* ── SECTION HEADERS ── */
+.sec-label{text-align:center;font-size:.75rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:.6rem;}
+h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;text-align:center;margin-bottom:.8rem;color:var(--gray-900);}
+.sec-desc{text-align:center;color:var(--gray-600);max-width:580px;margin:0 auto 2.5rem;font-size:.95rem;}
+
+/* ── PACKAGE CARDS ── */
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.pkg-card{background:#fff;border:2px solid var(--gray-200);border-radius:var(--radius-lg);padding:2rem;transition:all .25s;position:relative;cursor:pointer;}
+.pkg-card:hover{border-color:var(--green);box-shadow:var(--shadow-xl);transform:translateY(-4px);}
+.pkg-card.selected{border-color:var(--green);box-shadow:0 0 0 4px rgba(22,163,74,.1),var(--shadow-xl);}
+.pkg-card.featured{border-color:var(--green);}
+.pkg-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:1rem;}
+.pkg-badge-green{background:var(--green-m);color:var(--green);}
+.pkg-badge-red{background:var(--red-m);color:var(--red);}
+.pkg-popular{position:absolute;top:1rem;right:1rem;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;}
+.pkg-name{font-size:1.4rem;font-weight:800;margin-bottom:.3rem;}
+.pkg-os{font-size:.82rem;color:var(--gray-600);margin-bottom:1rem;}
+.pkg-price{font-size:2.6rem;font-weight:900;color:var(--red);margin-bottom:1.5rem;line-height:1;}
+.pkg-price span{font-size:.95rem;font-weight:400;color:var(--gray-600);}
+.pkg-ul{list-style:none;margin-bottom:1.5rem;}
+.pkg-ul li{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;color:var(--gray-700);padding:5px 0;border-bottom:1px solid var(--gray-100);}
+.pkg-ul li:last-child{border:none;}
+.pkg-select-btn{width:100%;padding:12px;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;border:2px solid var(--green);background:#fff;color:var(--green);}
+.pkg-select-btn:hover,.pkg-card.selected .pkg-select-btn{background:var(--green);color:#fff;}
+.sel-check{display:none;position:absolute;top:.9rem;left:.9rem;width:26px;height:26px;background:var(--green);border-radius:50%;align-items:center;justify-content:center;color:#fff;font-size:.75rem;}
+.pkg-card.selected .sel-check{display:flex;}
+
+/* ── THEME ADDON ── */
+.theme-box{max-width:560px;margin:2rem auto 0;padding:1.5rem 2rem;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--green-l),rgba(255,255,255,.8));border:2px solid rgba(22,163,74,.3);box-shadow:var(--shadow-md);}
+.theme-box-top{display:flex;align-items:center;gap:10px;margin-bottom:.8rem;}
+.theme-icon{width:36px;height:36px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;}
+.theme-title{font-weight:800;font-size:1rem;color:var(--gray-900);}
+.theme-subtitle{font-size:.82rem;color:var(--gray-600);}
+.theme-tags{display:flex;flex-wrap:wrap;gap:6px;margin:.8rem 0;}
+.theme-tag{font-size:.72rem;padding:3px 10px;background:var(--green-m);color:var(--green);border-radius:20px;font-weight:600;}
+.theme-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.theme-price{font-size:1.8rem;font-weight:900;color:var(--red);}
+.theme-toggle-wrap{display:flex;align-items:center;gap:10px;}
+.toggle{width:48px;height:26px;background:var(--gray-300);border-radius:13px;cursor:pointer;position:relative;transition:.3s;flex-shrink:0;border:none;}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.3s;box-shadow:var(--shadow);}
+.toggle.on{background:var(--green);}
+.toggle.on::after{left:25px;}
+.toggle-text{font-size:.85rem;color:var(--gray-600);font-weight:500;}
+
+/* ── SOFTWARE ── */
+.catalog-controls{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+.search-box{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;padding:0 14px;transition:border-color .2s;}
+.search-box:focus-within{border-color:var(--green);}
+.search-box input{flex:1;border:none;outline:none;font-size:.9rem;padding:11px 0;background:transparent;color:var(--gray-900);}
+.software-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.sw-col-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:.75rem;border-bottom:2px solid var(--gray-100);margin-bottom:1rem;}
+.sw-col-title{font-size:1.05rem;font-weight:800;color:var(--gray-900);}
+.sw-tier-price{font-size:1.2rem;font-weight:800;}
+.sw-tier-price.basic{color:var(--green);}
+.sw-tier-price.heavy{color:var(--red);}
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.85rem;}
+.sw-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;transition:all .2s;}
+.sw-card:hover{border-color:var(--green);box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.sw-card.in-cart{border-color:var(--green);background:var(--green-l);}
+.sw-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; font-size: 2.2rem; }
+.sw-icon.basic{color:var(--green);}
+.sw-icon.heavy{color:var(--red);}
+.sw-name{font-size:.9rem;font-weight:700;margin-bottom:.3rem;color:var(--gray-900);}
+.sw-desc{font-size:.75rem;color:var(--gray-600);flex-grow:1;line-height:1.4;margin-bottom:.75rem;}
+.sw-footer{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;}
+.sw-price{font-weight:700;font-size:.9rem;}
+.sw-price.basic{color:var(--green);}
+.sw-price.heavy{color:var(--red);}
+.sw-btns{display:flex;gap:5px;}
+.sw-btn{padding:5px 10px;border-radius:7px;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .15s;border:1.5px solid;display:flex;align-items:center;gap:4px;}
+.sw-btn-explore{background:#fff;color:var(--gray-600);border-color:var(--gray-300);}
+.sw-btn-explore:hover{border-color:var(--green);color:var(--green);}
+.sw-btn-add{background:var(--green);color:#fff;border-color:var(--green);}
+.sw-btn-add:hover{background:var(--green-h);}
+.sw-btn-remove{background:var(--red-m);color:var(--red);border-color:var(--red-m);}
+.sw-btn-remove:hover{background:var(--red);color:#fff;}
+.load-more-wrap{text-align:center;margin-top:1.2rem;}
+.btn-load{background:#fff;color:var(--gray-700);border:1.5px solid var(--gray-300);padding:9px 22px;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s;}
+.btn-load:hover{border-color:var(--green);color:var(--green);}
+
+/* ── WHATSAPP ── */
+.wa-section{max-width:680px;margin:0 auto 2.5rem;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid rgba(22,163,74,.3);border-radius:var(--radius-xl);padding:2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.wa-section::before{content:'';position:absolute;top:-30px;right:-30px;width:150px;height:150px;background:rgba(22,163,74,.06);border-radius:50%;}
+.wa-badge{display:inline-block;background:var(--green-m);color:var(--green);border:1px solid rgba(22,163,74,.3);border-radius:20px;padding:4px 12px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem;}
+.wa-title{font-size:1.5rem;font-weight:900;color:var(--gray-900);margin-bottom:.5rem;}
+.wa-sub{font-size:.9rem;color:var(--gray-600);margin-bottom:1.5rem;line-height:1.5;}
+.wa-link{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-decoration:none;padding:14px 32px;border-radius:50px;font-size:1rem;font-weight:700;box-shadow:0 6px 20px rgba(37,211,102,.3);transition:all .2s;animation:waPulse 2.5s ease-in-out infinite;}
+.wa-link:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.4);}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.3);}50%{box-shadow:0 6px 30px rgba(37,211,102,.5);}}
+.wa-info{display:flex;justify-content:center;gap:2rem;margin-top:1.2rem;flex-wrap:wrap;}
+.wa-info-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--green-h);}
+.wa-dot{width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0;}
+
+/* ── CONTACT GRID ── */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1.5rem;}
+.contact-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;transition:all .2s;}
+.contact-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);}
+.contact-icon-wrap{width:52px;height:52px;border-radius:12px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.contact-icon-wrap.loc{background:var(--red-m);color:var(--red);}
+.contact-icon-wrap.ph{background:var(--green-m);color:var(--green);}
+.contact-icon-wrap.em{background:#eff6ff;color:#2563eb;}
+.contact-label{font-size:.78rem;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;}
+.contact-val{font-size:.9rem;font-weight:600;color:var(--gray-800);line-height:1.5;}
+.contact-val a{color:var(--gray-800);text-decoration:none;}
+.contact-val a:hover{color:var(--green);}
+
+/* ── TERMS ── */
+.terms-box{max-width:860px;margin:2.5rem auto 0;background:linear-gradient(135deg,#fffbeb,#fef9c3);border:2px solid #fcd34d;border-radius:var(--radius-lg);padding:1.8rem 2rem;transition:border-color .3s;}
+.terms-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.terms-icon{width:40px;height:40px;background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.terms-title{font-weight:800;color:#92400e;font-size:1rem;}
+.terms-body{font-size:.84rem;color:#78350f;line-height:1.8;}
+.terms-body strong{color:#92400e;}
+.terms-list{margin-top:.8rem;list-style:none;display:flex;flex-direction:column;gap:6px;}
+.terms-list li{display:flex;gap:8px;font-size:.83rem;color:#92400e;opacity:.85;line-height:1.5;}
+.terms-list li::before{content:'—';color:#d97706;flex-shrink:0;}
+.tc-row{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed #fcd34d;}
+.tc-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none;}
+.tc-label input{display:none;}
+.tc-box{width:22px;height:22px;border-radius:6px;border:2px solid #f59e0b;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .2s;}
+.tc-box.checked{background:#f59e0b;border-color:#f59e0b;}
+.tc-text{font-size:.87rem;color:#92400e;font-weight:500;line-height:1.4;}
+.tc-msg{margin-top:.6rem;font-size:.8rem;font-weight:600;min-height:18px;}
+.tc-msg.ok{color:var(--green);}
+.tc-msg.err{color:var(--red);}
+
+/* ── STICKY CART ── */
+.sticky-cart{position:fixed;bottom:1.5rem;right:1.5rem;background:#fff;border:1.5px solid var(--gray-200);border-radius:16px;padding:.9rem 1.2rem;display:flex;align-items:center;gap:1rem;box-shadow:var(--shadow-xl);z-index:90;transform:translateY(200%);transition:transform .4s cubic-bezier(.175,.885,.32,1.275);max-width:300px;}
+.sticky-cart.show{transform:translateY(0);}
+.cart-amt{font-size:1.3rem;font-weight:900;color:var(--red);}
+.cart-label{font-size:.72rem;color:var(--gray-500);}
+
+/* ── EXPLORE MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s;}
+.modal-overlay.open{opacity:1;pointer-events:auto;}
+.explore-box{background:#fff;border-radius:var(--radius-xl);width:100%;max-width:620px;margin:auto;box-shadow:var(--shadow-xl);overflow:hidden;transform:scale(.96);transition:transform .25s;}
+.modal-overlay.open .explore-box{transform:scale(1);}
+.exp-head{padding:1.5rem 2rem;border-bottom:1px solid var(--gray-100);display:flex;align-items:flex-start;gap:1rem;}
+.exp-icon-big{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;flex-shrink:0;}
+.exp-head-info{flex:1;}
+.exp-name{font-size:1.3rem;font-weight:800;}
+.exp-tier-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:3px;}
+.exp-tier-badge.basic{background:var(--green-m);color:var(--green);}
+.exp-tier-badge.heavy{background:var(--red-m);color:var(--red);}
+.exp-price-big{font-size:1.5rem;font-weight:900;color:var(--red);margin-left:auto;white-space:nowrap;}
+.exp-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--gray-400);padding:0 0 0 .5rem;transition:color .2s;flex-shrink:0;}
+.exp-close:hover{color:var(--gray-700);}
+.exp-body{padding:1.5rem 2rem;overflow-y:auto;max-height:65vh;}
+.exp-fulldesc{font-size:.88rem;color:var(--gray-700);line-height:1.7;margin-bottom:1.2rem;background:var(--gray-50);border-radius:10px;padding:1rem;}
+.exp-section{margin-bottom:1.2rem;}
+.exp-section-title{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-500);margin-bottom:.6rem;display:flex;align-items:center;gap:6px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.skill-tag{font-size:.75rem;padding:4px 10px;border-radius:20px;font-weight:500;}
+.skill-tag.basic{background:var(--green-m);color:var(--green-h);}
+.skill-tag.heavy{background:var(--red-m);color:var(--red-h);}
+.exp-ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.exp-ul li{font-size:.83rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.exp-actions{display:flex;gap:.8rem;padding:1.2rem 2rem;border-top:1px solid var(--gray-100);flex-wrap:wrap;}
+
+/* ── CHECKOUT MODAL ── */
+.checkout-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.checkout-overlay.open{opacity:1;pointer-events:auto;}
+.checkout-box{background:#fff;border-radius:var(--radius-xl);width:100%;max-width:500px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl);transform:scale(.96);transition:transform .25s;}
+.checkout-overlay.open .checkout-box{transform:scale(1);}
+.checkout-head{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;border-bottom:1px solid var(--gray-100);}
+.checkout-head h3{font-size:1.15rem;font-weight:800;}
+.close-btn{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gray-400);}
+.close-btn:hover{color:var(--gray-700);}
+.checkout-body{padding:1.5rem 2rem;}
+.order-summary{background:var(--gray-50);border-radius:10px;padding:1rem;margin-bottom:1.5rem;font-size:.88rem;}
+.sum-row{display:flex;justify-content:space-between;margin-bottom:.4rem;color:var(--gray-600);}
+.sum-total{display:flex;justify-content:space-between;margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--gray-300);font-size:1.1rem;font-weight:800;color:var(--gray-900);}
+.sum-tags{display:flex;flex-wrap:wrap;gap:5px;margin:.6rem 0;}
+.sum-tag{background:var(--green-m);color:var(--green-h);font-size:.72rem;padding:3px 8px;border-radius:6px;font-weight:500;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--gray-700);margin-bottom:.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:.9rem;outline:none;transition:border-color .2s;color:var(--gray-900);background:#fff;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.1);}
+.form-group select option{background:#fff;}
+.form-group textarea{resize:vertical;min-height:70px;}
+
+/* ── MODERN REAL LAPTOP LOOK STYLES ── */
+.hero-stage{position:relative;width:min(700px,90vw);height:400px;margin:0 auto 2.5rem;}
+.hero-laptop-container {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  z-index: 2;
+}
+.laptop-screen-outer {
+  background: #1e293b;
+  border-radius: 12px 12px 0 0;
+  padding: 8px 8px 12px 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+.laptop-screen-inner {
+  background: #0d1520;
+  border-radius: 4px;
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+}
+.laptop-keyboard-base {
+  width: 440px;
+  height: 12px;
+  background: #cbd5e1;
+  border-radius: 0 0 12px 12px;
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px solid #94a3b8;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+.laptop-keyboard-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #94a3b8;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Win11 System UI */
+.win-bg-grad{position:absolute;inset:0;background:linear-gradient(135deg,#0a1628,#0d2137);}
+.win-bloom{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 70%,rgba(22,163,74,.25) 0%,transparent 65%);}
+.start-menu{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:86%;background:rgba(28,36,58,.95);backdrop-filter:blur(10px);border-radius:8px;border:1px solid rgba(255,255,255,.1);padding:10px;opacity:0;transition:opacity .4s,transform .4s;transform:translateX(-50%) translateY(10px);z-index:5;}
+.start-menu.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.start-label{font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:6px;}
+.start-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;}
+.start-app{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.6);transition:opacity .3s,transform .3s cubic-bezier(.34,1.56,.64,1);}
+.start-app.pop{opacity:1;transform:scale(1);}
+.taskbar{position:absolute;bottom:0;left:0;right:0;height:24px;background:rgba(15,22,40,.9);backdrop-filter:blur(5px);border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;gap:6px;}
+.tb-start{width:14px;height:14px;background:var(--green);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;}
+.tb-btn{width:14px;height:14px;background:rgba(255,255,255,.08);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,0.7);}
+.tb-clock{position:absolute;right:8px;font-size:7px;color:rgba(255,255,255,.6);font-family:monospace;}
+
+/* Floating tools layout */
+.sw-float{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);border:1px solid rgba(22,163,74,.2);border-radius:8px;padding:6px 10px;font-size:.7rem;font-weight:700;color:#1a2035;box-shadow:0 4px 12px rgba(0,0,0,.08);white-space:nowrap;z-index:3;}
+.sw-float .fe { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
+
+.fl1{top:15px;left:0;animation:floatUD 4s ease-in-out infinite;}
+.fl2{top:75px;left:15px;animation:floatUD 5s ease-in-out infinite .5s;}
+.fl3{top:140px;left:0;animation:floatUD 4.5s ease-in-out infinite 1s;}
+.fl4{bottom:95px;left:10px;animation:floatUD 5.5s ease-in-out infinite .3s;}
+.fl5{bottom:30px;left:20px;animation:floatUD 4.8s ease-in-out infinite .8s;}
+.fr1{top:15px;right:0;animation:floatUD 4.2s ease-in-out infinite .4s;}
+.fr2{top:75px;right:15px;animation:floatUD 5.2s ease-in-out infinite .9s;}
+.fr3{top:140px;right:0;animation:floatUD 4.6s ease-in-out infinite 1.2s;}
+.fr4{bottom:95px;right:10px;animation:floatUD 5.1s ease-in-out infinite .2s;}
+.fr5{bottom:30px;right:20px;animation:floatUD 4.9s ease-in-out infinite .7s;}
+@keyframes floatUD{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.reveal {opacity: 0; transform: translateY(15px); transition: opacity .6s ease, transform .6s ease;}
+.reveal.in {opacity: 1; transform: translateY(0);}
+
+/* ── MOBILE RESPONSIVENESS (NEW) ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-inner .nav-cta-btn { display: none; }
+  .hamburger { display: flex; }
+  
+  h1 { font-size: 2.2rem; }
+  .hero-stats { gap: 1.5rem; flex-direction: column; align-items: center; }
+  .hero-stage { height: 280px; width: 100%; margin-bottom: 1rem; }
+  .hero-laptop-container { transform: translate(-50%, -50%) scale(0.65); top: 50%; }
+  .sw-float { transform: scale(0.8); }
+  .fl1{top:5px; left:-10px;} .fr1{top:5px; right:-10px;}
+  
+  .software-split { grid-template-columns: 1fr; gap: 1.5rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+  
+  .theme-box { padding: 1rem; }
+  .theme-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+  
+  .wa-section { padding: 1.5rem 1rem; }
+  .terms-box { padding: 1.2rem; }
+  
+  .exp-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .exp-price-big { margin-left: 0; }
+  .exp-actions { flex-direction: column; }
+  .exp-actions .btn { width: 100%; justify-content: center; }
+  
+  .sticky-cart { right: 1rem; bottom: 1rem; left: 1rem; max-width: none; justify-content: space-between; }
+}
+</style>
+</head>
+<body>
+
+<div class="animated-bg">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">WinZone<span>.</span>CUET</a>
+    <div class="nav-links">
+      <a href="#packages">Packages</a>
+      <a href="#software">Software</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;">
+      <button class="nav-cta-btn" onclick="document.getElementById('software').scrollIntoView({behavior:'smooth'})">Order Now →</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#packages" onclick="toggleMenu()">Packages</a>
+  <a href="#software" onclick="toggleMenu()">Software</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <button class="mob-cta" onclick="toggleMenu();document.getElementById('software').scrollIntoView({behavior:'smooth'})">Order Now</button>
+</div>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge reveal">CUET 2nd Gate • Chittagong</div>
+      <h1 class="reveal">Windows & <span class="hl-green">Engineering</span><br>Software <span class="hl-red">Installation</span></h1>
+      <p class="hero-sub reveal">Professional setup service for CUET students. Choose your OS package, pick any engineering software — we do the rest.</p>
+
+      <div class="hero-stage reveal" id="heroStage">
+        <div class="sw-float fl1"><div class="fe"><i class="fa-brands fa-microsoft" style="color:#00a4ef"></i></div>MS Office</div>
+        <div class="sw-float fl2"><div class="fe"><i class="devicon-chrome-plain colored"></i></div>Chrome</div>
+        <div class="sw-float fl3"><div class="fe"><i class="devicon-matlab-plain colored"></i></div>MATLAB</div>
+        <div class="sw-float fl4"><div class="fe"><i class="fa-solid fa-compass-drafting" style="color:#dc2626"></i></div>AutoCAD</div>
+        <div class="sw-float fl5"><div class="fe"><i class="devicon-solidworks-plain colored"></i></div>SolidWorks</div>
+        <div class="sw-float fr1"><div class="fe"><i class="fa-solid fa-play" style="color:#ff8800"></i></div>VLC</div>
+        <div class="sw-float fr2"><div class="fe"><i class="fa-solid fa-file-zipper" style="color:#6b21a8"></i></div>WinRAR</div>
+        <div class="sw-float fr3"><div class="fe"><i class="devicon-vscode-plain colored"></i></div>VS Code</div>
+        <div class="sw-float fr4"><div class="fe"><i class="fa-solid fa-cloud-arrow-down" style="color:#16a34a"></i></div>IDM</div>
+        <div class="sw-float fr5"><div class="fe"><i class="fa-solid fa-wind" style="color:#FFB71B"></i></div>ANSYS</div>
+        
+        <div class="hero-laptop-container">
+          <div class="laptop-screen-outer">
+            <div class="laptop-screen-inner">
+              <div class="win-bg-grad"></div>
+              <div class="win-bloom"></div>
+              <div class="start-menu" id="startMenu">
+                <div class="start-label">Pinned Apps</div>
+                <div class="start-grid" id="startGrid"></div>
+              </div>
+              <div class="taskbar">
+                <div class="tb-start">🧩</div>
+                <div class="tb-btn">🔍</div>
+                <div class="tb-btn">📁</div>
+                <div class="tb-clock" id="tbClock">10:00</div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-keyboard-base"></div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#packages" class="btn btn-green reveal">📦 View Packages</a>
+        <a href="#software" class="btn btn-outline reveal">💻 Browse Software</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">106+</div><div class="stat-label">Engineering Apps</div></div>
+        <div class="stat-item"><div class="stat-num">5000+</div><div class="stat-label">CUET Students</div></div>
+        <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">OS Options</div></div>
+        <div class="stat-item"><div class="stat-num">9+</div><div class="stat-label">Departments</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" style="background:var(--gray-50);">
+  <div class="container">
+    <div class="sec-label">Base OS Packages</div>
+    <h2>Choose Your Windows</h2>
+    <p class="sec-desc">Every package includes full Windows setup + all daily-use software. <strong>No OS required</strong> — you can also order software only.</p>
+    <div class="packages-grid" id="pkg-container"></div>
+    <div class="theme-box">
+      <div class="theme-box-top">
+        <div class="theme-icon">🎨</div>
+        <div><div class="theme-title">Special Theme Customization Pack</div>
+        <div class="theme-subtitle">Optional add-on for any package</div></div>
+      </div>
+      <div class="theme-tags">
+        <span class="theme-tag">Custom Windows Theme</span>
+        <span class="theme-tag">Taskbar Redesign</span>
+        <span class="theme-tag">Icon Pack</span>
+        <span class="theme-tag">Wallpaper Set</span>
+      </div>
+      <div class="theme-row">
+        <div class="theme-price">+BDT 200</div>
+        <div class="theme-toggle-wrap">
+          <span class="toggle-text">Add Theme Pack</span>
+          <button class="toggle" id="theme-toggle" onclick="toggleTheme()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="software">
+  <div class="container">
+    <div class="sec-label">Engineering Software Catalog</div>
+    <h2>106 Apps — 4 Year Coverage</h2>
+    <p class="sec-desc">Select any software you need. OS package is <strong>not required</strong> — you can install individual apps only.</p>
+    <div class="catalog-controls reveal">
+      <div class="search-box"><input type="text" id="search-input" placeholder="Search any software (MATLAB, AutoCAD, Python...)"></div>
+    </div>
+    <div class="software-split reveal">
+      <div>
+        <div class="sw-col-header">
+          <div class="sw-col-title">🔧 Basic Tools</div>
+          <span class="sw-tier-price basic">BDT 100 each</span>
+        </div>
+        <div class="sw-grid" id="basic-grid"></div>
+        <div class="load-more-wrap"><button class="btn-load" id="load-basic" onclick="loadMore('basic')">▼ Load More</button></div>
+      </div>
+      <div>
+        <div class="sw-col-header">
+          <div class="sw-col-title">🧬 Professional Software</div>
+          <span class="sw-tier-price heavy">BDT 200 each</span>
+        </div>
+        <div class="sw-grid" id="heavy-grid"></div>
+        <div class="load-more-wrap"><button class="btn-load" id="load-heavy" onclick="loadMore('heavy')">▼ Load More</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--gray-50);">
+  <div class="container" style="text-align:center;">
+    <div class="sec-label">Get In Touch</div>
+    <h2>Visit Us or Order Online</h2>
+    <p class="sec-desc">Walk-in service at CUET 2nd Gate. Book a slot via WhatsApp for fastest response.</p>
+
+    <div class="wa-section">
+      <div class="wa-badge">Fastest Response</div>
+      <div class="wa-title">Chat on WhatsApp</div>
+      <div class="wa-sub">Book your slot, ask questions, or confirm your order — we reply within minutes.</div>
+      <a class="wa-link" href="https://wa.me/8801861977974" target="_blank">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Chat on WhatsApp
+      </a>
+      <div class="wa-info">
+        <div class="wa-info-item"><div class="wa-dot"></div>Instant replies every day</div>
+        <div class="wa-info-item"><div class="wa-dot"></div>Book a slot in minutes</div>
+        <div class="wa-info-item"><div class="wa-dot"></div>01861977974</div>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon-wrap loc">📍</div>
+        <div class="contact-label">Location</div>
+        <div class="contact-val">CUET 2nd Gate, Muhibullah Residence,<br>Ground Floor, Right Side</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap ph">📞</div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-val"><a href="tel:+8801861977974">01861977974</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap em">✉️</div>
+        <div class="contact-label">Email</div>
+        <div class="contact-val"><a href="mailto:kmns211277@gmail.com">kmns211277@gmail.com</a></div>
+      </div>
+    </div>
+
+    <div class="terms-box" id="terms-section">
+      <div class="terms-header">
+        <div class="terms-icon">⚠️</div>
+        <div class="terms-title">Service Disclaimer & Terms of Use</div>
+      </div>
+      <div class="terms-body">
+        <strong>WinZone CUET provides technical installation and configuration services only.</strong> We do not manufacture, develop, or hold ownership of any software listed on this website.
+        <ul class="terms-list">
+          <li>All software is installed strictly for <strong>academic and educational purposes</strong> within CUET campus use.</li>
+          <li>We are a <strong>service provider</strong> — our fee covers technical labor of installation, not the software license itself.</li>
+          <li>Customers are solely responsible for obtaining official licenses if required by their institution or employer.</li>
+          <li>WinZone CUET is not affiliated with Microsoft, Autodesk, MathWorks, Adobe, or any other software vendor.</li>
+          <li>We make no guarantees regarding software activation status beyond the point of delivery.</li>
+          <li>By placing an order, you confirm that you have read and agreed to all of the above terms.</li>
+        </ul>
+      </div>
+      <div class="tc-row">
+        <label class="tc-label" for="tc-cb">
+          <input type="checkbox" id="tc-cb" onchange="handleTc(this)">
+          <span class="tc-box" id="tc-box"><svg id="tc-check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="tc-text">I have read and agree to the above terms and conditions</span>
+        </label>
+        <div class="tc-msg" id="tc-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 <strong>WinZone CUET</strong> — Technical Installation & Configuration Service</p>
+  <p style="margin-top:.4rem;">CUET 2nd Gate, Chittagong &nbsp;|&nbsp; Serving CUET students with quality & reliability</p>
+</footer>
+
+<div class="sticky-cart" id="sticky-cart">
+  <div><div class="cart-label">Estimated Total</div><div class="cart-amt" id="cart-amt">BDT 0</div></div>
+  <button class="btn btn-red" onclick="openCheckout()" style="flex-shrink:0;padding:10px 16px;font-size:.85rem;">🛒 Order</button>
+</div>
+
+<div class="modal-overlay" id="exploreModal" onclick="if(event.target===this)closeExplore()">
+  <div class="explore-box">
+    <div id="exploreBody"></div>
+  </div>
+</div>
+
+<div class="checkout-overlay" id="checkoutModal" onclick="if(event.target===this)closeCheckout()">
+  <div class="checkout-box">
+    <div class="checkout-head">
+      <h3>Complete Your Order</h3>
+      <button class="close-btn" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="checkout-body">
+      <div class="order-summary" id="order-summary"></div>
+      <form id="order-form" onsubmit="submitOrder(event)">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="cus-name" required placeholder="Your full name"></div>
+        <div class="form-group"><label>Phone *</label><input type="tel" id="cus-phone" required placeholder="018xxxxxxxx"></div>
+        <div class="form-group"><label>Department</label>
+          <select id="cus-dept"><option value="">Select department...</option>
+            <option>CSE</option><option>EEE</option><option>CE</option><option>ME</option>
+            <option>ARCH</option><option>URP</option><option>CHE</option><option>PME</option>
+            <option>NAME</option><option>MME</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Student Year</label>
+          <select id="cus-year"><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Alumni</option></select>
+        </div>
+        <div class="form-group"><label>Notes (Optional)</label><textarea id="cus-notes" placeholder="Preferred time, special requests..."></textarea></div>
+        <button type="submit" class="btn btn-green" style="width:100%;justify-content:center;padding:13px;font-size:1rem;">✅ Confirm Order — Pay at Service</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── HIGH-QUALITY VECTOR ICON MAPPING (DEVICON & FONTAWESOME) ────────────
+const APP_LOGOS = {
+  1: '<i class="devicon-cplusplus-plain colored"></i>',
+  2: '<i class="devicon-c-plain colored"></i>',
+  3: '<i class="devicon-visualstudio-plain colored"></i>',
+  4: '<i class="fa-solid fa-code" style="color:#2C2255;"></i>',
+  5: '<i class="devicon-pycharm-plain colored"></i>',
+  6: '<i class="devicon-anaconda-original colored"></i>',
+  7: '<i class="fa-solid fa-server" style="color:#FB7A24;"></i>',
+  8: '<i class="devicon-mysql-plain colored"></i>',
+  9: '<i class="devicon-androidstudio-plain colored"></i>',
+  10: '<i class="fa-solid fa-network-wired" style="color:#1BA0D7;"></i>',
+  11: '<i class="fa-solid fa-computer" style="color:#183A61;"></i>',
+  12: '<i class="fa-solid fa-window-restore" style="color:#607D8B;"></i>',
+  13: '<i class="devicon-arduino-plain colored"></i>',
+  14: '<i class="fa-solid fa-microchip" style="color:#00A600;"></i>',
+  15: '<i class="fa-solid fa-water" style="color:#0055A4;"></i>',
+  16: '<i class="fa-solid fa-diagram-project" style="color:#31752F;"></i>',
+  17: '<i class="fa-solid fa-chart-line" style="color:#0000FF;"></i>',
+  18: '<i class="fa-solid fa-chart-pie" style="color:#CC0000;"></i>',
+  19: '<i class="fa-solid fa-wave-square" style="color:#C40022;"></i>',
+  20: '<i class="fa-solid fa-microchip" style="color:#314CB0;"></i>',
+  21: '<i class="fa-solid fa-calculator" style="color:#000000;"></i>',
+  22: '<i class="devicon-rstudio-plain colored"></i>',
+  23: '<i class="devicon-blender-original colored"></i>',
+  24: '<i class="fa-solid fa-earth-americas" style="color:#589632;"></i>',
+  25: '<i class="fa-solid fa-wifi" style="color:#1679A7;"></i>',
+  26: '<i class="fa-solid fa-chart-simple" style="color:#F2C811;"></i>',
+  27: '<i class="devicon-intellij-plain colored"></i>',
+  28: '<i class="devicon-postman-plain colored"></i>',
+  29: '<i class="devicon-github-original colored"></i>',
+  30: '<i class="fa-solid fa-chart-column" style="color:#E97627;"></i>',
+  31: '<i class="fa-solid fa-cloud-showers-heavy" style="color:#004B87;"></i>',
+  32: '<i class="fa-solid fa-droplet" style="color:#0071CE;"></i>',
+  33: '<i class="fa-solid fa-layer-group" style="color:#4B5320;"></i>',
+  34: '<i class="fa-solid fa-square-root-variable" style="color:#000080;"></i>',
+  35: '<i class="devicon-putty-plain colored"></i>',
+  36: '<i class="devicon-matlab-plain colored"></i>',
+  37: '<i class="fa-solid fa-microchip" style="color:#007ACC;"></i>',
+  38: '<i class="fa-solid fa-plug" style="color:#FFD100;"></i>',
+  39: '<i class="fa-solid fa-wave-square" style="color:#800000;"></i>',
+  40: '<i class="fa-solid fa-circuit-board" style="color:#0055A4;"></i>',
+  41: '<i class="fa-solid fa-memory" style="color:#A5915F;"></i>',
+  42: '<i class="devicon-labview-plain colored"></i>',
+  43: '<i class="fa-solid fa-bolt" style="color:#0000FF;"></i>',
+  44: '<i class="fa-solid fa-tower-broadcast" style="color:#009999;"></i>',
+  45: '<i class="fa-solid fa-plug-circle-bolt" style="color:#0696D7;"></i>',
+  46: '<i class="fa-solid fa-compass-drafting" style="color:#0696D7;"></i>',
+  47: '<i class="fa-solid fa-road" style="color:#0696D7;"></i>',
+  48: '<i class="fa-solid fa-cube" style="color:#005F9E;"></i>',
+  49: '<i class="fa-solid fa-building" style="color:#0096FF;"></i>',
+  50: '<i class="fa-regular fa-building" style="color:#000000;"></i>',
+  51: '<i class="fa-solid fa-cubes" style="color:#2D547F;"></i>',
+  52: '<i class="fa-solid fa-city" style="color:#0055A4;"></i>',
+  53: '<i class="fa-solid fa-building-columns" style="color:#0055A4;"></i>',
+  54: '<i class="fa-solid fa-layer-group" style="color:#0055A4;"></i>',
+  55: '<i class="fa-solid fa-water" style="color:#004B87;"></i>',
+  56: '<i class="fa-solid fa-globe" style="color:#004279;"></i>',
+  57: '<i class="devicon-solidworks-plain colored"></i>',
+  58: '<i class="fa-solid fa-plane" style="color:#00558B;"></i>',
+  59: '<i class="fa-solid fa-gear" style="color:#FF6A00;"></i>',
+  60: '<i class="fa-solid fa-fan" style="color:#F37021;"></i>',
+  61: '<i class="fa-solid fa-wind" style="color:#FFB71B;"></i>',
+  62: '<i class="fa-solid fa-car" style="color:#009999;"></i>',
+  63: '<i class="fa-solid fa-draw-polygon" style="color:#000000;"></i>',
+  64: '<i class="fa-solid fa-house-chimney" style="color:#00AEEF;"></i>',
+  65: '<i class="fa-solid fa-lightbulb" style="color:#ED1C24;"></i>',
+  66: '<i class="fa-solid fa-cubes-stacked" style="color:#0096FF;"></i>',
+  67: '<i class="devicon-photoshop-plain colored"></i>',
+  68: '<i class="devicon-illustrator-plain colored"></i>',
+  69: '<i class="fa-solid fa-book-open" style="color:#FF3366;"></i>',
+  70: '<i class="fa-solid fa-flask" style="color:#00B5E2;"></i>',
+  71: '<i class="fa-solid fa-oil-well" style="color:#00B5E2;"></i>',
+  72: '<i class="fa-solid fa-vial" style="color:#00A2E8;"></i>',
+  73: '<i class="fa-solid fa-temperature-half" style="color:#0055A4;"></i>',
+  74: '<i class="fa-solid fa-industry" style="color:#E51400;"></i>',
+  75: '<i class="fa-solid fa-gem" style="color:#004B87;"></i>',
+  76: '<i class="fa-solid fa-droplet" style="color:#004B87;"></i>',
+  77: '<i class="fa-solid fa-pipe" style="color:#004B87;"></i>',
+  78: '<i class="fa-solid fa-screwdriver-wrench" style="color:#CC0000;"></i>',
+  79: '<i class="fa-solid fa-mountain" style="color:#663300;"></i>',
+  80: '<i class="fa-solid fa-ship" style="color:#0055A4;"></i>',
+  81: '<i class="fa-solid fa-anchor" style="color:#0055A4;"></i>',
+  82: '<i class="fa-solid fa-trowel-bricks" style="color:#0055A4;"></i>',
+  83: '<i class="fa-solid fa-mound" style="color:#0055A4;"></i>',
+  84: '<i class="fa-solid fa-faucet-drip" style="color:#00B5E2;"></i>',
+  85: '<i class="fa-solid fa-solar-panel" style="color:#F2A900;"></i>',
+  86: '<i class="fa-solid fa-battery-full" style="color:#00A600;"></i>',
+  87: '<i class="fa-solid fa-tower-cell" style="color:#0055A4;"></i>',
+  88: '<i class="fa-solid fa-plug-circle-check" style="color:#ED1C24;"></i>',
+  89: '<i class="fa-solid fa-microchip" style="color:#0055A4;"></i>',
+  90: '<i class="fa-solid fa-satellite-dish" style="color:#FFB71B;"></i>',
+  91: '<i class="fa-solid fa-wifi" style="color:#FFB71B;"></i>',
+  92: '<i class="fa-solid fa-microchip" style="color:#0055A4;"></i>',
+  93: '<i class="fa-solid fa-memory" style="color:#0071C5;"></i>',
+  94: '<i class="fa-solid fa-microchip" style="color:#E51400;"></i>',
+  95: '<i class="fa-solid fa-helmet-safety" style="color:#0096FF;"></i>',
+  96: '<i class="fa-solid fa-vr-cardboard" style="color:#000000;"></i>',
+  97: '<i class="fa-solid fa-calendar-days" style="color:#F80000;"></i>',
+  98: '<i class="fa-solid fa-robot" style="color:#0096FF;"></i>',
+  99: '<i class="fa-solid fa-gears" style="color:#0055A4;"></i>',
+  100: '<i class="fa-solid fa-truck-fast" style="color:#0055A4;"></i>',
+  101: '<i class="fa-solid fa-camera" style="color:#000000;"></i>',
+  102: '<i class="fa-solid fa-square-root-variable" style="color:#DD1100;"></i>',
+  103: '<i class="fa-solid fa-water" style="color:#0055A4;"></i>',
+  104: '<i class="fa-solid fa-city" style="color:#000000;"></i>',
+  105: '<i class="fa-solid fa-road" style="color:#0055A4;"></i>',
+  106: '<i class="fa-solid fa-building-user" style="color:#0055A4;"></i>'
+};
+
+// ─── DATA ───────────────────────────────────────────────────────────────
+const PACKAGES=[
+  {id:1,name:'Starter',os:'Windows 7 / 8 / 8.1',price:300,features:['Perfect for older laptops','All essential daily software','Full driver setup','Lightweight & optimized']},
+  {id:2,name:'Standard',os:'Windows 10',price:400,featured:true,features:['Most stable & popular','Optimized performance','Full security setup','Wide software compatibility']},
+  {id:3,name:'Premium',os:'Windows 11',price:500,features:['Latest Windows interface','Snap layouts & widgets','DirectStorage & AI features','Modern UI & performance']}
+];
+
+const BASIC=[
+  {id:1,name:'Dev-C++',desc:'Lightweight IDE for C/C++ programming',fullDesc:'Dev-C++ is a free, lightweight IDE for C and C++ programming.',skills:['C Programming','C++ Programming'],careers:['C++ Developer'],projects:['Calculator App']},
+  {id:2,name:'Code::Blocks',desc:'Open-source IDE for C, C++, Fortran',fullDesc:'Code::Blocks is a free cross-platform IDE supporting GCC compiler.',skills:['C/C++ Development'],careers:['Software Engineer'],projects:['Text Editor']},
+  {id:3,name:'Visual Studio Community',desc:'Full Microsoft IDE for C#, .NET, C++',fullDesc:'Visual Studio Community is a powerful free IDE from Microsoft.',skills:['C# Programming'],careers:['.NET Developer'],projects:['Desktop CRM']},
+  {id:4,name:'Eclipse IDE',desc:'Popular IDE for Java development',fullDesc:'Eclipse is a comprehensive IDE for Java with a powerful plugin ecosystem.',skills:['Java Programming'],careers:['Java Developer'],projects:['Banking System']},
+  {id:5,name:'PyCharm',desc:'Professional IDE for Python programming',fullDesc:'PyCharm is a dedicated Python IDE with smart code completion.',skills:['Python Programming'],careers:['Python Developer'],projects:['Web Scraper']},
+  {id:6,name:'Anaconda (Python + Jupyter)',desc:'Data science & ML environment for Python',fullDesc:'Anaconda is a Python/R distribution for data science.',skills:['Python Data Science'],careers:['Data Scientist'],projects:['Prediction Model']},
+  {id:7,name:'XAMPP',desc:'Local server for PHP & MySQL web development',fullDesc:'XAMPP provides Apache, MySQL, PHP, and Perl in one package.',skills:['PHP','MySQL'],careers:['Web Developer'],projects:['CMS System']},
+  {id:8,name:'MySQL Workbench',desc:'Database design & management tool',fullDesc:'MySQL Workbench is a visual database design tool.',skills:['SQL','Database Design'],careers:['DBA'],projects:['Library DB']},
+  {id:9,name:'Android Studio',desc:'Official IDE for Android app development',fullDesc:'Android Studio is the official Android IDE.',skills:['Kotlin/Java'],careers:['Mobile Developer'],projects:['Weather App']},
+  {id:10,name:'Cisco Packet Tracer',desc:'Network topology design & simulation',fullDesc:'Cisco Packet Tracer is a network simulation tool.',skills:['Network Design'],careers:['Network Engineer'],projects:['LAN Setup']},
+  {id:11,name:'VirtualBox',desc:'Run virtual machines on your PC',fullDesc:'VirtualBox creates and runs virtual machines.',skills:['Virtualization'],careers:['DevOps Engineer'],projects:['Test Lab']},
+  {id:12,name:'VMware Workstation',desc:'Professional-grade virtualization software',fullDesc:'VMware Workstation is a professional virtualization platform.',skills:['Virtualization'],careers:['Cloud Architect'],projects:['Multi-VM Lab']},
+  {id:13,name:'Arduino IDE',desc:'Program Arduino microcontrollers',fullDesc:'Arduino IDE is the official environment for programming Arduino boards.',skills:['Arduino C++'],careers:['Embedded Engineer'],projects:['Smart Home']},
+  {id:14,name:'Keil µVision',desc:'ARM & 8051 microcontroller embedded IDE',fullDesc:'Keil µVision is a professional IDE for ARM microcontrollers.',skills:['ARM Programming'],careers:['Firmware Developer'],projects:['RTOS Project']},
+  {id:15,name:'EPANET',desc:'Water distribution network simulation',fullDesc:'EPANET simulates water distribution piping systems.',skills:['Pipe Modeling'],careers:['Water Engineer'],projects:['City Water Network']},
+  {id:16,name:'MS Project',desc:'Project scheduling & resource management',fullDesc:'Microsoft Project is the industry-standard project management tool.',skills:['Scheduling'],careers:['Project Manager'],projects:['Construction Schedule']},
+  {id:17,name:'Origin',desc:'Scientific data analysis & graphing',fullDesc:'Origin is a data analysis and graphing software.',skills:['Data Analysis'],careers:['Research Scientist'],projects:['Temperature Study']},
+  {id:18,name:'SPSS',desc:'Statistical analysis & survey data processing',fullDesc:'SPSS is a statistical analysis software for social sciences.',skills:['Statistics'],careers:['Data Analyst'],projects:['Survey Analysis']},
+  {id:19,name:'LTspice',desc:'Free SPICE circuit simulator by Analog Devices',fullDesc:'LTspice is a high-performance free SPICE simulator.',skills:['SPICE Simulation'],careers:['Analog Engineer'],projects:['Buck Converter']},
+  {id:20,name:'KiCad',desc:'Free open-source PCB design tool',fullDesc:'KiCad is a professional-grade open-source PCB design suite.',skills:['PCB Layout'],careers:['PCB Designer'],projects:['Arduino Shield']},
+  {id:21,name:'GNU Octave',desc:'Free MATLAB-compatible numerical computing',fullDesc:'GNU Octave is a free open-source alternative to MATLAB.',skills:['Numerical Analysis'],careers:['Control Engineer'],projects:['Matrix Solver']},
+  {id:22,name:'R + RStudio',desc:'Statistical computing & data visualization',fullDesc:'R is the leading statistical programming language.',skills:['Statistical Analysis'],careers:['Data Scientist'],projects:['Regression Analysis']},
+  {id:23,name:'Blender',desc:'Free 3D modeling, animation & rendering',fullDesc:'Blender is a powerful free and open-source 3D creation suite.',skills:['3D Modeling'],careers:['3D Artist'],projects:['Product Rendering']},
+  {id:24,icon:'fa-map',name:'QGIS',desc:'Free open-source GIS mapping software',fullDesc:'QGIS is a professional free GIS platform.',skills:['Spatial Analysis'],careers:['GIS Analyst'],projects:['Land Cover Map']},
+  {id:25,name:'Wireshark',desc:'Network packet analyzer for CSE & networking',fullDesc:'Wireshark is the worlds most popular network protocol analyzer.',skills:['Packet Capture'],careers:['Security Analyst'],projects:['Traffic Analysis']},
+  {id:26,name:'Power BI Desktop',desc:'Business intelligence & data visualization',fullDesc:'Microsoft Power BI Desktop is a free business analytics tool.',skills:['Data Modeling'],careers:['Business Analyst'],projects:['Sales Dashboard']},
+  {id:27,name:'IntelliJ IDEA',desc:'Professional IDE for Java and Kotlin',fullDesc:'IntelliJ IDEA by JetBrains is the most intelligent Java IDE.',skills:['Java Development'],careers:['Backend Engineer'],projects:['REST API']},
+  {id:28,name:'Postman',desc:'API testing and development platform',fullDesc:'Postman is the industry-standard tool for API testing.',skills:['API Testing'],careers:['QA Engineer'],projects:['API Test Suite']},
+  {id:29,name:'Git + GitHub Desktop',desc:'Version control system with GUI client',fullDesc:'Git is the world standard for version control.',skills:['Version Control'],careers:['Software Role'],projects:['Team Project']},
+  {id:30,name:'Tableau Public',desc:'Interactive data visualization & dashboards',fullDesc:'Tableau Public is a free data visualization platform.',skills:['Data Visualization'],careers:['Data Analyst'],projects:['Population Dashboard']},
+  {id:31,name:'HEC-HMS',desc:'Hydrological modeling for watersheds & floods',fullDesc:'HEC-HMS simulates rainfall-runoff processes.',skills:['Watershed Modeling'],careers:['Hydrologist'],projects:['Watershed Study']},
+  {id:32,name:'SWMM (EPA)',desc:'Stormwater and urban drainage simulation',fullDesc:'EPA SWMM simulates stormwater generation and transport.',skills:['Stormwater Modeling'],careers:['Stormwater Engineer'],projects:['Urban Flood Model']},
+  {id:33,name:'MODFLOW',desc:'USGS standard groundwater flow modeling',fullDesc:'MODFLOW is the USGS gold standard for groundwater flow.',skills:['Groundwater Flow'],careers:['Hydrogeologist'],projects:['Aquifer Study']},
+  {id:34,name:'Scilab',desc:'Free MATLAB-alternative for scientific computing',fullDesc:'Scilab is a free open-source scientific computing environment.',skills:['Numerical Computing'],careers:['Research Engineer'],projects:['Control System']},
+  {id:35,name:'PuTTY',desc:'SSH client & terminal emulator',fullDesc:'PuTTY is a free SSH, Telnet, and serial console client.',skills:['SSH Connections'],careers:['SysAdmin'],projects:['Remote Server Access']}
+];
+
+const HEAVY=[
+  {id:36,name:'MATLAB + Simulink',desc:'Numerical computing & system simulation',fullDesc:'MATLAB is a high-performance language for technical computing.',skills:['Numerical Analysis'],careers:['Control Engineer'],projects:['PID Controller']},
+  {id:37,name:'Proteus',desc:'Electronic circuit design & simulation',fullDesc:'Proteus combines circuit simulation with PCB design.',skills:['Circuit Simulation'],careers:['Electronics Engineer'],projects:['Arduino Shield']},
+  {id:38,name:'Multisim',desc:'Circuit simulation & SPICE analysis (NI)',fullDesc:'Multisim is a powerful SPICE simulation tool.',skills:['SPICE Analysis'],careers:['Circuit Designer'],projects:['Amplifier Design']},
+  {id:39,name:'PSpice',desc:'Analog & digital circuit simulation',fullDesc:'PSpice is the classic SPICE-based simulation tool.',skills:['SPICE Simulation'],careers:['Analog Engineer'],projects:['Op-Amp Circuit']},
+  {id:40,name:'OrCAD',desc:'PCB schematic & layout design',fullDesc:'OrCAD is a complete PCB design suite.',skills:['Schematic Capture'],careers:['PCB Designer'],projects:['Sensor PCB']},
+  {id:41,name:'Altium Designer',desc:'Professional PCB design & manufacturing',fullDesc:'Altium Designer is the unified PCB design platform.',skills:['Unified PCB Design'],careers:['Senior PCB Designer'],projects:['Multi-layer PCB']},
+  {id:42,name:'LabVIEW',desc:'Data acquisition & instrument control',fullDesc:'LabVIEW is a graphical programming environment for measurement.',skills:['G Programming'],careers:['Automation Engineer'],projects:['Temperature Monitor']},
+  {id:43,name:'ETAP',desc:'Electrical power system design & analysis',fullDesc:'ETAP is a comprehensive power system analysis tool.',skills:['Load Flow Analysis'],careers:['Power Systems Engineer'],projects:['Industrial Power Study']},
+  {id:44,name:'PSS/E',desc:'Large-scale power system simulation',fullDesc:'PSS/E is Siemens power system simulation tool.',skills:['Load Flow'],careers:['Grid Engineer'],projects:['Network Planning']},
+  {id:45,name:'AutoCAD Electrical',desc:'Electrical panel & wiring diagram design',fullDesc:'AutoCAD Electrical is Autodesks specialized tool for control systems.',skills:['Electrical Schematic'],careers:['Electrical Engineer'],projects:['Motor Control Panel']},
+  {id:46,name:'AutoCAD',desc:'2D & 3D technical drawing & drafting',fullDesc:'AutoCAD is Autodesks flagship CAD software.',skills:['2D Drafting'],careers:['CAD Drafter'],projects:['Floor Plan']},
+  {id:47,name:'AutoCAD Civil 3D',desc:'Civil engineering design & survey tools',fullDesc:'AutoCAD Civil 3D extends AutoCAD with civil engineering tools.',skills:['Survey Data'],careers:['Civil Engineer'],projects:['Road Design']},
+  {id:48,name:'SketchUp',desc:'3D architectural & interior modeling',fullDesc:'SketchUp is the most accessible 3D modeling tool.',skills:['3D Modeling'],careers:['Architect'],projects:['House Design']},
+  {id:49,name:'Revit',desc:'Building Information Modeling (BIM)',fullDesc:'Autodesk Revit is the leading BIM platform.',skills:['BIM Modeling'],careers:['BIM Manager'],projects:['Multi-story Building']},
+  {id:50,name:'ArchiCAD',desc:'Architecture design & BIM documentation',fullDesc:'ArchiCAD by Graphisoft is a BIM software.',skills:['BIM Design'],careers:['Architect'],projects:['Residential Design']},
+  {id:51,name:'STAAD.Pro',desc:'Structural analysis & steel/concrete design',fullDesc:'STAAD.Pro is a comprehensive structural analysis software.',skills:['Structural Analysis'],careers:['Structural Engineer'],projects:['Industrial Building']},
+  {id:52,name:'SAP2000',desc:'General structural analysis & design',fullDesc:'SAP2000 is a comprehensive finite element analysis software.',skills:['FEA for Structures'],careers:['Structural Engineer'],projects:['Tall Building']},
+  {id:53,name:'ETABS',desc:'Multi-story building structural analysis',fullDesc:'ETABS is specialized for multi-story building design.',skills:['Building Modeling'],careers:['Structural Engineer'],projects:['High-rise Building']},
+  {id:54,name:'SAFE',desc:'Foundation slab & mat foundation design',fullDesc:'SAFE is specialized for foundation design.',skills:['Foundation Design'],careers:['Geotechnical Engineer'],projects:['Mat Foundation']},
+  {id:55,name:'HEC-RAS',desc:'River & flood hydraulic analysis',fullDesc:'HEC-RAS simulates hydraulic conditions in river channels.',skills:['Hydraulic Modeling'],careers:['Hydraulic Engineer'],projects:['Flood Risk Map']},
+  {id:56,name:'ArcGIS',desc:'GIS mapping & spatial analysis',fullDesc:'Esris ArcGIS is the worlds leading GIS platform.',skills:['Spatial Analysis'],careers:['GIS Analyst'],projects:['Land Use Map']},
+  {id:57,name:'SolidWorks',desc:'3D mechanical CAD modeling & design',fullDesc:'SolidWorks is the industry standard 3D CAD software.',skills:['Parametric Modeling'],careers:['Mechanical Engineer'],projects:['Gear Assembly']},
+  {id:58,name:'CATIA',desc:'Advanced 3D CAD for aerospace & automotive',fullDesc:'CATIA is the high-end 3D CAD platform from Dassault.',skills:['Surface Modeling'],careers:['Design Engineer'],projects:['Aircraft Wing']},
+  {id:59,name:'Inventor',desc:'3D mechanical design & CAM software',fullDesc:'Autodesk Inventor is a 3D CAD for mechanical design.',skills:['Parametric Modeling'],careers:['Mechanical Designer'],projects:['Motor Assembly']},
+  {id:60,name:'Fusion 360',desc:'Cloud-based 3D CAD, CAM & simulation',fullDesc:'Fusion 360 by Autodesk is a cloud-based 3D CAD/CAM platform.',skills:['Cloud CAD'],careers:['Product Designer'],projects:['Drone Frame']},
+  {id:61,name:'ANSYS (Mech + FLUENT)',desc:'FEA & CFD simulation',fullDesc:'ANSYS is the world-leading simulation platform.',skills:['FEA','CFD'],careers:['Simulation Engineer'],projects:['Heat Sink Analysis']},
+  {id:62,name:'NX (Siemens)',desc:'Advanced PLM for product design',fullDesc:'Siemens NX is an advanced PLM platform with 3D CAD.',skills:['PLM'],careers:['PLM Engineer'],projects:['Automotive Assembly']},
+  {id:63,name:'Rhino 3D',desc:'Complex freeform 3D surface modeling',fullDesc:'Rhino 3D is a NURBS-based 3D modeling tool.',skills:['NURBS Modeling'],careers:['Industrial Designer'],projects:['Furniture Design']},
+  {id:64,name:'Lumion',desc:'Real-time architecture visualization',fullDesc:'Lumion is a real-time 3D visualization tool for architects.',skills:['Real-time Rendering'],careers:['Architectural Visualizer'],projects:['House Visualization']},
+  {id:65,name:'V-Ray',desc:'Photorealistic rendering plugin',fullDesc:'V-Ray is the world-leading photorealistic rendering engine.',skills:['Global Illumination'],careers:['CG Artist'],projects:['Interior Render']},
+  {id:66,name:'3ds Max',desc:'3D modeling, animation & rendering',fullDesc:'3ds Max by Autodesk is a 3D modeling software.',skills:['Polygon Modeling'],careers:['3D Artist'],projects:['Character Model']},
+  {id:67,name:'Adobe Photoshop',desc:'Professional image editing & compositing',fullDesc:'Photoshop is the industry standard for image editing.',skills:['Photo Editing'],careers:['Graphic Designer'],projects:['Poster Design']},
+  {id:68,name:'Adobe Illustrator',desc:'Vector graphics & illustration software',fullDesc:'Illustrator is the standard for vector graphics.',skills:['Vector Drawing'],careers:['Graphic Designer'],projects:['Logo Design']},
+  {id:69,name:'Adobe InDesign',desc:'Portfolio, brochure & publication layout',fullDesc:'InDesign is a desktop publishing software.',skills:['Page Layout'],careers:['Layout Designer'],projects:['Engineering Report']},
+  {id:70,name:'Aspen Plus',desc:'Chemical process flowsheet simulation',fullDesc:'Aspen Plus is the leading process simulation software.',skills:['Process Simulation'],careers:['Chemical Engineer'],projects:['Distillation Column']},
+  {id:71,name:'Aspen HYSYS',desc:'Oil & gas process simulation',fullDesc:'Aspen HYSYS is the industry standard for oil & gas.',skills:['Oil & Gas Simulation'],careers:['Process Engineer'],projects:['Gas Plant']},
+  {id:72,name:'CHEMCAD',desc:'Chemical engineering process simulation',fullDesc:'CHEMCAD is a steady-state process simulator.',skills:['Steady-state Sim'],careers:['Process Engineer'],projects:['Reactor Simulation']},
+  {id:73,name:'COMSOL Multiphysics',desc:'Multiphysics simulation — heat, fluid, structural',fullDesc:'COMSOL is a multiphysics simulation platform coupling FEA.',skills:['Multiphysics Modeling'],careers:['Simulation Engineer'],projects:['Thermal Stress']},
+  {id:74,name:'PRO/II',desc:'Steady-state chemical process simulation',fullDesc:'PRO/II is a steady-state process simulator for petrochemicals.',skills:['Process Simulation'],careers:['Process Engineer'],projects:['Separation Train']},
+  {id:75,name:'Petrel',desc:'Reservoir modeling & geological interpretation',fullDesc:'Petrel integrates seismic and reservoir simulation.',skills:['Reservoir Modeling'],careers:['Petroleum Engineer'],projects:['Reservoir Model']},
+  {id:76,name:'ECLIPSE',desc:'Industry-standard reservoir simulation',fullDesc:'ECLIPSE is the industry-standard reservoir simulator.',skills:['Reservoir Simulation'],careers:['Reservoir Engineer'],projects:['History Match']},
+  {id:77,name:'PIPESIM',desc:'Oil & gas pipeline flow simulation',fullDesc:'PIPESIM is a steady-state flow simulator for pipelines.',skills:['Multiphase Flow'],careers:['Pipeline Engineer'],projects:['Pipeline Flow Study']},
+  {id:78,name:'WellPlan',desc:'Drilling trajectory planning & analysis',fullDesc:'WellPlan is a wellbore trajectory planning tool.',skills:['Trajectory Planning'],careers:['Drilling Engineer'],projects:['Horizontal Well']},
+  {id:79,name:'RockWare',desc:'Geological mapping & borehole visualization',fullDesc:'RockWare is a geological mapping tool for borehole data.',skills:['Geological Mapping'],careers:['Geologist'],projects:['Geological Map']},
+  {id:80,name:'Maxsurf',desc:'Ship hull design, stability & resistance',fullDesc:'Maxsurf is a naval architecture software for hull form design.',skills:['Hull Modeling'],careers:['Naval Architect'],projects:['Hull Design']},
+  {id:81,name:'NAPA',desc:'Ship stability, safety & structural design',fullDesc:'NAPA is a naval architecture software for ship stability.',skills:['Ship Stability'],careers:['Naval Architect'],projects:['Ship Structure']},
+  {id:82,name:'Tekla Structures',desc:'Advanced structural BIM & steel detailing',fullDesc:'Tekla Structures is a BIM software for structural detailing.',skills:['Structural BIM'],careers:['BIM Manager'],projects:['Steel Frame Building']},
+  {id:83,name:'PLAXIS 2D/3D',desc:'Geotechnical finite element analysis',fullDesc:'PLAXIS is the leading FEA software for geotechnical engineering.',skills:['FEA for Soils'],careers:['Geotechnical Engineer'],projects:['Slope Stability']},
+  {id:84,name:'WaterGEMS',desc:'Advanced water distribution network modeling',fullDesc:'WaterGEMS is a hydraulic modeling software for water systems.',skills:['Hydraulic Modeling'],careers:['Water Network Engineer'],projects:['City Water Network']},
+  {id:85,name:'PVsyst',desc:'Solar PV system design & simulation',fullDesc:'PVsyst is specialized software for photovoltaic system design.',skills:['Solar PV Design'],careers:['Solar Engineer'],projects:['Rooftop Solar']},
+  {id:86,name:'Homer Pro',desc:'Microgrid & renewable energy system optimizer',fullDesc:'Homer Pro optimizes hybrid renewable energy systems.',skills:['Microgrid Design'],careers:['Energy Engineer'],projects:['Island Microgrid']},
+  {id:87,name:'DigSilent PowerFactory',desc:'Power system analysis & simulation',fullDesc:'DigSilent PowerFactory is a leading power system analysis platform.',skills:['Load Flow'],careers:['Power Systems Engineer'],projects:['Network Planning']},
+  {id:88,name:'PSCAD',desc:'Electromagnetic transient power system simulation',fullDesc:'PSCAD is the gold standard for electromagnetic transient simulation.',skills:['EMT Simulation'],careers:['HVDC Engineer'],projects:['HVDC Link']},
+  {id:89,name:'PSIM',desc:'Power electronics & motor drive simulation',fullDesc:'PSIM is specialized for power electronics and motor drives.',skills:['Power Electronics'],careers:['Power Electronics Engineer'],projects:['Solar Inverter']},
+  {id:90,name:'CST Studio Suite',desc:'3D electromagnetic simulation (RF/Microwave)',fullDesc:'CST Studio Suite provides 3D full-wave electromagnetic simulation.',skills:['Antenna Design'],careers:['RF Engineer'],projects:['Patch Antenna']},
+  {id:91,name:'HFSS (Ansys EM)',desc:'High-frequency 3D EM field simulation',fullDesc:'Ansys HFSS is the gold standard 3D electromagnetic simulation.',skills:['3D EM Simulation'],careers:['RF Engineer'],projects:['Dipole Antenna']},
+  {id:92,name:'ModelSim',desc:'VHDL & Verilog HDL simulation tool',fullDesc:'ModelSim is the industry-standard simulation environment.',skills:['VHDL'],careers:['Digital Design Engineer'],projects:['ALU Design']},
+  {id:93,name:'Quartus Prime (Intel FPGA)',desc:'Intel/Altera FPGA design & programming',fullDesc:'Intel Quartus Prime is the design software for Intel FPGAs.',skills:['FPGA Programming'],careers:['FPGA Engineer'],projects:['Logic Analyzer']},
+  {id:94,name:'Vivado (Xilinx/AMD)',desc:'Xilinx FPGA design suite & IP integrator',fullDesc:'Vivado Design Suite is AMD/Xilinx next-generation environment.',skills:['Xilinx FPGA'],careers:['FPGA Engineer'],projects:['Image Processing FPGA']},
+  {id:95,name:'Navisworks',desc:'BIM coordination & clash detection',fullDesc:'Autodesk Navisworks is a BIM coordination tool.',skills:['BIM Coordination'],careers:['BIM Manager'],projects:['MEP Clash Detection']},
+  {id:96,name:'Enscape',desc:'Real-time rendering plugin (Revit, SketchUp)',fullDesc:'Enscape is a real-time rendering plugin.',skills:['Real-time Rendering'],careers:['Architectural Visualizer'],projects:['Building Visualization']},
+  {id:97,name:'Primavera P6',desc:'Enterprise project management & scheduling',fullDesc:'Oracle Primavera P6 is the gold standard for project management.',skills:['Project Scheduling'],careers:['Project Manager'],projects:['Construction Schedule']},
+  {id:98,name:'Robot Structural Analysis',desc:'Autodesk structural analysis & BIM design',fullDesc:'Autodesk Robot Structural Analysis is a structural analysis package.',skills:['Structural Analysis'],careers:['Structural Engineer'],projects:['Office Building']},
+  {id:99,name:'CAESAR II',desc:'Piping stress analysis (ASME/ISO codes)',fullDesc:'CAESAR II is the industry standard for pipe stress analysis.',skills:['Pipe Stress Analysis'],careers:['Piping Engineer'],projects:['Refinery Piping']},
+  {id:100,name:'Abaqus',desc:'Advanced nonlinear finite element analysis',fullDesc:'Abaqus is a powerful FEA platform for advanced simulations.',skills:['Nonlinear FEA'],careers:['FEA Engineer'],projects:['Crash Simulation']},
+  {id:101,name:'KeyShot',desc:'Real-time 3D product rendering',fullDesc:'KeyShot is the fastest photorealistic rendering software.',skills:['Photorealistic Rendering'],careers:['Product Designer'],projects:['Product Catalog']},
+  {id:102,name:'Wolfram Mathematica',desc:'Symbolic & numerical computing system',fullDesc:'Wolfram Mathematica is a powerful computational system.',skills:['Symbolic Computing'],careers:['Research Scientist'],projects:['Symbolic Solver']},
+  {id:103,name:'MIKE FLOOD / MIKE 21',desc:'2D coastal & flood hydraulic simulation',fullDesc:'MIKE FLOOD and MIKE 21 are 2D hydraulic tools.',skills:['2D Hydrodynamics'],careers:['Coastal Engineer'],projects:['Coastal Flood Map']},
+  {id:104,name:'Twinmotion',desc:'Real-time architectural visualization',fullDesc:'Twinmotion uses Unreal Engine for architectural visualizations.',skills:['Real-time 3D'],careers:['Architectural Visualizer'],projects:['Urban Design']},
+  {id:105,name:'Bentley OpenRoads',desc:'Road, highway & infrastructure design',fullDesc:'Bentley OpenRoads Designer is a road design solution.',skills:['Highway Design'],careers:['Highway Engineer'],projects:['Highway Design']},
+  {id:106,name:'PROKON',desc:'Comprehensive structural design suite',fullDesc:'PROKON is a comprehensive structural design suite.',skills:['RC Design'],careers:['Structural Engineer'],projects:['RC Beam & Column']}
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────
+let state={selectedPkg:null,themeOn:false,cart:[],basicCount:8,heavyCount:8,total:0};
+
+// ─── INIT ────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded',()=>{
+  renderPkgs();renderBasic();renderHeavy();setupSearch();
+  initLaptop();
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+
+function initLaptop(){
+  const clk=()=>{const n=new Date();document.getElementById('tbClock').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');};
+  clk();setInterval(clk,60000);
+  
+  // Windows Start Menu Apps updated with vectors
+  const startApps = [
+      '<i class="fa-brands fa-microsoft" style="color:#00a4ef"></i>',
+      '<i class="devicon-chrome-plain colored"></i>',
+      '<i class="fa-solid fa-play" style="color:#ff8800"></i>',
+      '<i class="devicon-matlab-plain colored"></i>',
+      '<i class="fa-solid fa-compass-drafting" style="color:#dc2626"></i>',
+      '<i class="devicon-solidworks-plain colored"></i>',
+      '<i class="devicon-photoshop-plain colored"></i>',
+      '<i class="fa-solid fa-file-zipper" style="color:#6b21a8"></i>',
+      '<i class="fa-solid fa-cloud-arrow-down" style="color:#16a34a"></i>',
+      '<i class="devicon-vscode-plain colored"></i>',
+      '<i class="devicon-github-original colored"></i>',
+      '<i class="fa-solid fa-wind" style="color:#FFB71B"></i>'
+  ];
+  const grid=document.getElementById('startGrid');
+  startApps.forEach(iconHtml=>{
+    const d=document.createElement('div');
+    d.className='start-app';
+    d.innerHTML = `<span style="font-size: 1.6rem;">${iconHtml}</span>`;
+    grid.appendChild(d);
+  });
+  let done=false;
+  const trigger=()=>{if(done)return;done=true;flyIn();};
+  window.addEventListener('scroll',()=>{if(window.scrollY>80)trigger();},{once:true});
+  setTimeout(trigger,2500);
+}
+
+function flyIn(){
+  const laptop = document.querySelector('.hero-laptop-container');
+  const rect = laptop.getBoundingClientRect();
+  
+  // Calculate center of the laptop screen relative to viewport
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  document.querySelectorAll('.sw-float').forEach((el,i)=>{
+    setTimeout(()=>{
+      const elRect = el.getBoundingClientRect();
+      const moveX = centerX - (elRect.left + elRect.width / 2);
+      const moveY = centerY - (elRect.top + elRect.height / 2);
+
+      el.style.transition='transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease';
+      el.style.transform=`translate(${moveX}px, ${moveY}px) scale(0.1)`;
+      el.style.opacity='0';
+    },i*60);
+  });
+  
+  setTimeout(()=>{
+    document.getElementById('startMenu').classList.add('show');
+    const apps=document.querySelectorAll('.start-app');
+    apps.forEach((a,i)=>setTimeout(()=>a.classList.add('pop'),i*40));
+  },800);
+}
+
+// ─── PACKAGES ────────────────────────────────────────────────────────────
+function renderPkgs(){
+  document.getElementById('pkg-container').innerHTML=PACKAGES.map(p=>`
+    <div class="pkg-card${p.featured?' featured':''}${state.selectedPkg?.id===p.id?' selected':''}" onclick="selectPkg(${p.id},this)">
+      <div class="sel-check">✓</div>
+      ${p.featured?'<span class="pkg-popular">⭐ Most Popular</span>':''}
+      <div class="pkg-badge ${p.id===3?'pkg-badge-red':'pkg-badge-green'}">${p.os}</div>
+      <div class="pkg-name">${p.name}</div>
+      <div class="pkg-price">BDT ${p.price}<span> / setup</span></div>
+      <ul class="pkg-ul">${p.features.map(f=>`<li>✓ ${f}</li>`).join('')}
+        <li>✓ <strong>All daily software included</strong></li>
+      </ul>
+      <button class="pkg-select-btn">${state.selectedPkg?.id===p.id?'✓ Selected':'Select Package'}</button>
+    </div>`).join('');
+}
+
+function selectPkg(id,el){
+  state.selectedPkg=PACKAGES.find(p=>p.id===id);
+  renderPkgs();updateTotal();
+}
+
+function toggleTheme(){
+  state.themeOn=!state.themeOn;
+  document.getElementById('theme-toggle').classList.toggle('on',state.themeOn);
+  updateTotal();
+}
+
+// ─── SOFTWARE ─────────────────────────────────────────────────────────────
+function getIcon(s){
+  return APP_LOGOS[s.id] || `<i class="fa-solid fa-laptop-code" style="color:var(--gray-400);"></i>`;
+}
+
+function swCard(s,tier){
+  const inCart=state.cart.find(x=>x.id===s.id);
+  const cls=tier==='basic'?'basic':'heavy';
+  return `<div class="sw-card${inCart?' in-cart':''}">
+    <div class="sw-icon ${cls}">${getIcon(s)}</div>
+    <div class="sw-name">${s.name}</div>
+    <div class="sw-desc">${s.desc}</div>
+    <div class="sw-footer">
+      <span class="sw-price ${cls}">BDT ${tier==='basic'?100:200}</span>
+      <div class="sw-btns">
+        <button class="sw-btn sw-btn-explore" onclick="explore(${s.id},'${tier}')" title="Explore">🔍</button>
+        <button class="sw-btn ${inCart?'sw-btn-remove':'sw-btn-add'}" onclick="toggleCart(${s.id},'${tier}')">
+          ${inCart?'✕ Remove':'+ Add'}
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderBasic(){
+  const vis=BASIC.slice(0,state.basicCount);
+  document.getElementById('basic-grid').innerHTML=vis.map(s=>swCard(s,'basic')).join('');
+  document.getElementById('load-basic').style.display=state.basicCount>=BASIC.length?'none':'inline-flex';
+}
+
+function renderHeavy(){
+  const vis=HEAVY.slice(0,state.heavyCount);
+  document.getElementById('heavy-grid').innerHTML=vis.map(s=>swCard(s,'heavy')).join('');
+  document.getElementById('load-heavy').style.display=state.heavyCount>=HEAVY.length?'none':'inline-flex';
+}
+
+function loadMore(tier){
+  if(tier==='basic'){state.basicCount=Math.min(state.basicCount+8,BASIC.length);renderBasic();}
+  else{state.heavyCount=Math.min(state.heavyCount+8,HEAVY.length);renderHeavy();}
+}
+
+function toggleCart(id,tier){
+  const idx=state.cart.findIndex(x=>x.id===id);
+  if(idx>-1){state.cart.splice(idx,1);}
+  else{const src=tier==='basic'?BASIC:HEAVY;const s=src.find(x=>x.id===id);if(s)state.cart.push(s);}
+  if(tier==='basic')renderBasic(); else renderHeavy();
+  updateTotal();
+}
+
+function updateTotal(){
+  const base=state.selectedPkg?state.selectedPkg.price:0;
+  const theme=state.themeOn?200:0;
+  const sw=state.cart.reduce((a,i)=>a+(i.id<=35?100:200),0);
+  state.total=base+theme+sw;
+  document.getElementById('cart-amt').textContent=`BDT ${state.total}`;
+  document.getElementById('sticky-cart').classList.toggle('show',state.total>0);
+}
+
+// ─── EXPLORE MODAL ────────────────────────────────────────────────────────
+function explore(id,tier){
+  const src=tier==='basic'?BASIC:HEAVY;
+  const s=src.find(x=>x.id===id);
+  if(!s)return;
+  const cls=tier==='basic'?'basic':'heavy';
+  const price=`BDT ${tier==='basic'?100:200}`;
+  document.getElementById('exploreBody').innerHTML=`
+    <div class="exp-head">
+      <div class="exp-icon-big">${getIcon(s)}</div>
+      <div class="exp-head-info">
+        <div class="exp-name">${s.name}</div>
+        <span class="exp-tier-badge ${cls}">${tier==='basic'?'Basic Tool':'Professional Software'}</span>
+      </div>
+      <div class="exp-price-big">${price}</div>
+      <button class="exp-close" onclick="closeExplore()">✕</button>
+    </div>
+    <div class="exp-body">
+      <div class="exp-fulldesc">${s.fullDesc||s.desc}</div>
+      <div class="exp-section">
+        <div class="exp-section-title">🎓 Skills You Will Learn</div>
+        <div class="skill-tags">${(s.skills||[]).map(k=>`<span class="skill-tag ${cls}">${k}</span>`).join('')}</div>
+      </div>
+      <div class="exp-section">
+        <div class="exp-section-title">💼 Career Opportunities</div>
+        <ul class="exp-ul">${(s.careers||[]).map(c=>`<li>${c}</li>`).join('')}</ul>
+      </div>
+      <div class="exp-section">
+        <div class="exp-section-title">🚀 Projects You Can Build</div>
+        <ul class="exp-ul">${(s.projects||[]).map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>
+    </div>
+    <div class="exp-actions">
+      <button class="btn ${state.cart.find(x=>x.id===s.id)?'btn-outline':'btn-green'}" onclick="toggleCart(${s.id},'${tier}');closeExplore()">
+        ${state.cart.find(x=>x.id===s.id)?'✕ Remove from Cart':'+ Add to Cart — '+price}
+      </button>
+      <button class="btn btn-outline" onclick="closeExplore()">Close</button>
+    </div>`;
+  document.getElementById('exploreModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeExplore(){document.getElementById('exploreModal').classList.remove('open');document.body.style.overflow='';}
+
+// ─── SEARCH ───────────────────────────────────────────────────────────────
+function setupSearch(){
+  document.getElementById('search-input').addEventListener('input',function(){
+    const q=this.value.toLowerCase();
+    const fBasic=BASIC.filter(s=>s.name.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q));
+    const fHeavy=HEAVY.filter(s=>s.name.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q));
+    document.getElementById('basic-grid').innerHTML=fBasic.map(s=>swCard(s,'basic')).join('')||'<p style="color:var(--gray-500);grid-column:1/-1;padding:1rem 0;font-size:.9rem;">No results found</p>';
+    document.getElementById('heavy-grid').innerHTML=fHeavy.map(s=>swCard(s,'heavy')).join('')||'<p style="color:var(--gray-500);grid-column:1/-1;padding:1rem 0;font-size:.9rem;">No results found</p>';
+    document.getElementById('load-basic').style.display=q?'none':(state.basicCount>=BASIC.length?'none':'inline-flex');
+    document.getElementById('load-heavy').style.display=q?'none':(state.heavyCount>=HEAVY.length?'none':'inline-flex');
+  });
+}
+
+// ─── T&C ─────────────────────────────────────────────────────────────────
+function handleTc(cb){
+  const box=document.getElementById('tc-box');
+  const icon=document.getElementById('tc-check');
+  const msg=document.getElementById('tc-msg');
+  const terms=document.getElementById('terms-section');
+  if(cb.checked){
+    box.classList.add('checked');icon.style.display='block';
+    msg.textContent='✓ Terms accepted. You may now proceed.';msg.className='tc-msg ok';
+    terms.style.borderColor='rgba(22,163,74,.4)';
+  }else{
+    box.classList.remove('checked');icon.style.display='none';
+    msg.textContent='';msg.className='tc-msg';
+    terms.style.borderColor='#fcd34d';
+  }
+}
+
+// ─── CHECKOUT & WHATSAPP REDIRECTION ─────────────────────────────────────
+function openCheckout(){
+  if(!document.getElementById('tc-cb').checked){
+    document.getElementById('terms-section').scrollIntoView({behavior:'smooth',block:'center'});
+    const terms=document.getElementById('terms-section');
+    const msg=document.getElementById('tc-msg');
+    terms.style.borderColor='rgba(220,38,38,.5)';
+    msg.textContent='⚠ Please accept the Terms & Conditions first.';msg.className='tc-msg err';
+    setTimeout(()=>{terms.style.borderColor='#fcd34d';},3000);
+    return;
+  }
+  const summary=document.getElementById('order-summary');
+  const tags=state.cart.map(i=>`<span class="sum-tag">${i.name} (BDT ${i.id<=35?100:200})</span>`).join('')||'<span style="color:var(--gray-500);font-style:italic;font-size:.82rem;">No additional software</span>';
+  summary.innerHTML=`
+    ${state.selectedPkg?`<div class="sum-row"><span>Package: ${state.selectedPkg.name} (${state.selectedPkg.os})</span><span>BDT ${state.selectedPkg.price}</span></div>`:
+    `<div class="sum-row"><span style="color:var(--gray-500)">No OS package selected</span><span>BDT 0</span></div>`}
+    ${state.themeOn?`<div class="sum-row"><span>Special Theme Pack</span><span>+BDT 200</span></div>`:''}
+    <div class="sum-row" style="margin-top:.6rem;border-top:1px dashed var(--gray-200);padding-top:.6rem;"><span>Software (${state.cart.length} selected)</span><span></span></div>
+    <div class="sum-tags">${tags}</div>
+    <div class="sum-total"><span>Grand Total</span><span>BDT ${state.total}</span></div>`;
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open');document.body.style.overflow='';}
+
+function submitOrder(e){
+  e.preventDefault();
+  
+  // Collecting user inputs from the form
+  const name = document.getElementById('cus-name').value;
+  const phone = document.getElementById('cus-phone').value;
+  const dept = document.getElementById('cus-dept').value;
+  const year = document.getElementById('cus-year').value;
+  const notes = document.getElementById('cus-notes').value;
+
+  // Building the WhatsApp Message
+  let msg = `*New Order - WinZone CUET*\n\n`;
+  msg += `*Name:* ${name}\n`;
+  msg += `*Phone:* ${phone}\n`;
+  msg += `*Dept:* ${dept}\n`;
+  msg += `*Year:* ${year}\n\n`;
+
+  if(state.selectedPkg){
+    msg += `*Package:* ${state.selectedPkg.name} (${state.selectedPkg.os}) - BDT ${state.selectedPkg.price}\n`;
+  }
+  if(state.themeOn){
+    msg += `*Theme Pack:* Yes (+BDT 200)\n`;
+  }
+
+  msg += `*Software (${state.cart.length}):*\n`;
+  if(state.cart.length > 0){
+    state.cart.forEach(item => {
+      msg += `- ${item.name} (BDT ${item.id<=35?100:200})\n`;
+    });
+  } else {
+    msg += `- None\n`;
+  }
+
+  if(notes){
+    msg += `\n*Notes:* ${notes}\n`;
+  }
+  
+  msg += `\n*Total Amount: BDT ${state.total}*\n`;
+
+  // Encoding the message to be URL safe
+  const encodedMsg = encodeURIComponent(msg);
+  
+  // Your provided WhatsApp Number
+  const waUrl = `https://wa.me/8801861977974?text=${encodedMsg}`;
+
+  const btn=e.target.querySelector('button[type="submit"]');
+  btn.innerHTML='⏳ Redirecting to WhatsApp...';
+  btn.disabled=true;
+
+  setTimeout(()=>{
+    // Open WhatsApp URL in new tab
+    window.open(waUrl, '_blank');
+    
+    // Cleanup Form and state
+    closeCheckout();
+    state.selectedPkg=null;state.themeOn=false;state.cart=[];state.total=0;state.basicCount=8;state.heavyCount=8;
+    document.getElementById('theme-toggle').classList.remove('on');
+    document.getElementById('cart-amt').textContent='BDT 0';
+    document.getElementById('sticky-cart').classList.remove('show');
+    renderPkgs();renderBasic();renderHeavy();
+    btn.innerHTML='✅ Confirm Order — Pay at Service';btn.disabled=false;
+    e.target.reset();
+  },800);
+}
+
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeExplore();closeCheckout();}});
+</script>
+</body>
+</html>
